@@ -94,10 +94,10 @@ async def change_password(
 async def send_password_reset_token(
     *, 
     email: str = Body(embed=True),
-    backgorund_tasks: BackgroundTasks
+    background_tasks: BackgroundTasks
 ):
     """Sends an email with the token to reset password."""
-    backgorund_tasks.add_task(try_to_send_pwd_reset_email, email=email)
+    background_tasks.add_task(try_to_send_pwd_reset_email, email=email)
     return {
         "message": "If we found a user with that email, we sent a password reset token to it."
     }
